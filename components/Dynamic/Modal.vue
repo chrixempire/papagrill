@@ -1,7 +1,7 @@
 
 <template>
-  <div v-if="showModal" class="modal-overlay" @click="closeModal">
-    <div class="modal-container" @click.stop>
+  <div v-if="showModal" :class="{ 'modal-overlay': true, 'show-modal': showModal }"  @click="closeModal">
+    <div :class="{ 'modal-container': true, 'show-modal': showModal }" @click.stop>
       <div class="modal-content">
         <slot></slot>
       </div>
@@ -37,6 +37,8 @@ const closeModal = () => {
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 0; /* Initial opacity */
+  transition: opacity 0.5s ease-in; 
 }
 
 .modal-container {
@@ -45,12 +47,16 @@ const closeModal = () => {
   border-radius: 16px;
 background: white;
 box-shadow: 0px 1px 3px 0px rgba(50, 50, 71, 0.10), 0px 0px 1px 0px rgba(12, 26, 75, 0.20);
-
-width: 400px;
-height: 400px;
+/* width: 400px; */
+/* height: 400px; */
+opacity: 0; /* Initial opacity */
+  transition: opacity 0.5s ease-in;
 }
 .modal-content{
     width: 100%;
+}
+.show-modal {
+  opacity: 1;
 }
 @media screen and (max-width: 650px) {
     .modal-overlay {

@@ -8,12 +8,8 @@
         <DynamicImage :imageUrl="productImageUrl" :isModalView="false" />
        </div>
       <DynamicModal :showModal="showModal" @closeModal="closeModal">
-        <div class="list" v-for="(card, index) in cards" :key="index">
-          <DynamicSelectList
-            :card="card"
-            :selectedItem="selectedCard"
-            @selectItem="selectItem"
-          />
+        <div class="list" >
+          <LocationModal/>
         </div>
       </DynamicModal>
     </div>
@@ -27,9 +23,10 @@
   const productImageUrl = 'images/chickenimage.jpg';
   const cards = [
     { label: 'Yaba', value: 'Yaba' },
-    { label: 'Ikeja', value: 'ikeja' },
-    { label: 'Lagos', value: 'lagos' },
-    { label: 'Abuja', value: 'abuja' },
+    { label: 'Ikeja', value: 'Ikeja' },
+    { label: 'Ikorodu', value: 'Ikorodu' },
+    { label: 'Lekki', value: 'Lekki' },
+    { label: 'Abuja', value: 'Abuja' },
   ];
   
   const selectedCard = ref("");
