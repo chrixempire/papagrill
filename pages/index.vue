@@ -1,39 +1,122 @@
 <template>
     <div class="total">
-        <div class="product">
-            <DynamicProductCard @clickedButton="openModal"/>
+        <div class="product-ctn">
+          <div class="product">
+            <ProductCard  v-for="(product, index) in products" :key="index" :data="product" @clickedButton="openModal"/>
         </div>
-       <div class="image">
-        <DynamicImage :imageUrl="modalImageUrl" :isModalView="true" />
-        <DynamicImage :imageUrl="productImageUrl" :isModalView="false" />
-       </div>
-      <DynamicModal :showModal="showModal" @closeModal="closeModal">
+        <LoaderWeb v-if="!products.length"/>
+        </div>
+      <ModalMain :showModal="showModal" @closeModal="closeModal">
         <div class="list" >
-          <LocationModal/>
+          <ModalNoAdons  v-for="(modal, index) in modals" :key="index" :data="modal "/>
         </div>
-      </DynamicModal>
+      </ModalMain>
     </div>
   </template>
   
   <script setup>
   import { ref } from 'vue';
-  
+  const modals = [
+  {
+    name: "Classic beef burger",
+    snippet: "Classic sub",
+    price: "₦3,500",
+    image: "images/chickenimage.jpg",
+  },
+  ]
+  const products = [
+  {
+    name: "Classic beef burger",
+    snippet: "Classic sub",
+    price: "₦3,500",
+    image: "images/chickenimage.jpg",
+  },
+  {
+    name: "French fries",
+    snippet: "Classic sub",
+    price: "₦3,500",
+    image: "images/bacon.jpg",
+  },
+  {
+    name: "Chicken and bacon",
+    snippet: "Classic sub",
+    price: "₦3,500",
+    image: "images/pap.jpg",
+  },
+  {
+    name: "Naija breakfast",
+    snippet: "Classic sub",
+    price: "₦3,500",
+    image: "images/philly.jpg",
+  },
+  {
+    name: "Naija breakfast",
+    snippet: "Classic sub",
+    price: "₦3,500",
+    image: "images/philly.jpg",
+  },
+  {
+    name: "Naija breakfast",
+    snippet: "Classic sub",
+    price: "₦3,500",
+    image: "images/philly.jpg",
+  },
+  {
+    name: "Naija breakfast",
+    snippet: "Classic sub",
+    price: "₦3,500",
+    image: "images/philly.jpg",
+  },
+  {
+    name: "Naija breakfast",
+    snippet: "Classic sub",
+    price: "₦3,500",
+    image: "images/philly.jpg",
+  },
+  {
+    name: "Naija breakfast",
+    snippet: "Classic sub",
+    price: "₦3,500",
+    image: "images/philly.jpg",
+  },
+  {
+    name: "Naija breakfast",
+    snippet: "Classic sub",
+    price: "₦3,500",
+    image: "images/philly.jpg",
+  },
+  {
+    name: "Naija breakfast",
+    snippet: "Classic sub",
+    price: "₦3,500",
+    image: "images/philly.jpg",
+  },
+  {
+    name: "Naija breakfast",
+    snippet: "Classic sub",
+    price: "₦3,500",
+    image: "images/philly.jpg",
+  },
+  {
+    name: "Naija breakfast",
+    snippet: "Classic sub",
+    price: "₦3,500",
+    image: "images/philly.jpg",
+  },
+  {
+    name: "Naija breakfast",
+    snippet: "Classic sub",
+    price: "₦3,500",
+    image: "images/philly.jpg",
+  },
+  {
+    name: "Naija breakfast",
+    snippet: "Classic sub",
+    price: "₦3,500",
+    image: "images/philly.jpg",
+  },
+];
   const showModal = ref(false);
-  const modalImageUrl = 'images/meat.jpg';
-  const productImageUrl = 'images/chickenimage.jpg';
-  const cards = [
-    { label: 'Yaba', value: 'Yaba' },
-    { label: 'Ikeja', value: 'Ikeja' },
-    { label: 'Ikorodu', value: 'Ikorodu' },
-    { label: 'Lekki', value: 'Lekki' },
-    { label: 'Abuja', value: 'Abuja' },
-  ];
-  
-  const selectedCard = ref("");
-  const selectItem = (value) => {
-    selectedCard.value = value;
-    console.log(value)
-  };
 
   const openModal = () => {
     showModal.value = true
@@ -44,11 +127,14 @@
   </script>
   
   <style scoped>
-  .total{
-    padding: 80px;
-  }
+
   .list{
     width: 100%;
+  }
+  .product{
+    display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px 28px; 
   }
   .image{
     margin: 25px;
