@@ -1,9 +1,9 @@
 
 <template>
-    <div v-if="showModal" :class="{ 'modal-overlay': true, 'show-modal': showModal }"  @click="closeModal">
+    <div v-if="showModal" :class="{ 'modal-overlay': true, 'show-modal': showModal }"  >
       <div :class="{ 'modal-container': true, 'show-modal': showModal }" @click.stop>
         <div class="modal-content">
-          <slot></slot>
+          <slot :closeModal="closeModal"></slot>
         </div>
       </div>
     </div>
@@ -39,19 +39,26 @@
     justify-content: center;
     opacity: 0; 
     transition: opacity 0.5s ease-in; 
+    overflow: hidden;
   }
   
   .modal-container {
+    max-height: 90%;
     background: white;
-    padding: 20px;
+    padding: 16px;
     border-radius: 16px;
   background: white;
-  box-shadow: 0px 1px 3px 0px rgba(50, 50, 71, 0.10), 0px 0px 1px 0px rgba(12, 26, 75, 0.20);
+  /* box-shadow: 0px 1px 3px 0px rgba(50, 50, 71, 0.10), 0px 0px 1px 0px rgba(12, 26, 75, 0.20); */
   opacity: 0;
     transition: opacity 0.5s ease-in;
+    overflow-y: auto;
+    /* overflow: hidden; */
   }
+
+
   .modal-content{
       width: 100%;
+      overflow-y: auto;
   }
   .show-modal {
     opacity: 1;

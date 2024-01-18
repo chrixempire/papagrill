@@ -1,7 +1,7 @@
 <template>
     <div class="total">
         <ul @click="selectItem(data.value)" class="container">
-            <li class="text-body-large-regular regular">{{ data.label }}</li>
+            <li ><p class="text-body-large-regular regular text-grey1">{{ data.label }}</p></li>
             <li>
                 <svg class="circle" :class="{ selected: isSelected }" xmlns="http://www.w3.org/2000/svg" width="20"
                     height="20" viewBox="0 0 20 20" fill="none">
@@ -15,8 +15,9 @@
                         stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
             </li>
+        
         </ul>
-        <div class="slot"  :class="{ clicked: selectedItem === data.value }">
+        <div class="slot" @click="selectItem(data.value)"  :class="{ clicked: selectedItem === data.value }">
             <slot></slot>
         </div>
     </div>
@@ -70,16 +71,17 @@ svg circle {
 
 ul li {
     list-style: none;
-    color: #303237;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 24px;
     
 }
 .clicked {
     border: 2px solid #000;
-  
+    border-radius: 12px;
+  }
+
+  .total{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
   }
 </style>
     

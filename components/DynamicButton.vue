@@ -5,7 +5,7 @@
       :class="buttonClasses"
       :disabled="disabled || isLoading"
     >
-      <span v-if="showText && !isLoading"> {{ buttonText }}({{ buttonPrice }}) </span>
+      <span v-if="showText && !isLoading"> {{ buttonText }} {{ buttonPrice }} </span>
       <slot v-if="!isLoading" name="svg"></slot>
       <LoaderButton :size="size" :isLoading="isLoading"/>
     </button>
@@ -49,19 +49,17 @@
   
   const buttonClasses = computed(() => {
     return {
-      "text-button-micro micro": size === "micro",
-      "text-button-small small": size === "small",
-      "text-button-medium medium": size === "medium",
-      "text-button-large large": size === "large",
+      "text-button-micro ": size === "micro",
+      "text-button-small ": size === "small",
+      "text-button-medium ": size === "medium",
+      "text-button-standard": size === "standard",
   
       // Button type
       "primary-button": type === "primary",
       "secondary-button": type === "secondary",
-      "neutral-outline": type === "outline",
-      "neutral-filled": type === "filled",
-      destructive: type === "destructive",
-      "link-primary": type === "link-primary",
-      "link-neutral": type === "link-neutral",
+      "neutral-button": type === "neutral",
+      "ghost-button": type === "ghost",
+      "negative": type === "negative",
   
       // icon position
       "icon-left": icon === "left",

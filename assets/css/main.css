@@ -136,13 +136,6 @@ p {
     font-weight: 400;
 }
 
-.text-grey1{
-    color:var(--grey---grey1)
-}
-.text-grey3{
-    color:var(--grey---grey3)
-}
-
 h1 {
     letter-spacing: calc(var(--base-letter---spacing) * 2);
     line-height: normal;

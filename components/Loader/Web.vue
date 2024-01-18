@@ -45,8 +45,6 @@
   width: 70%;
   height: 44.07px;
 
-  /* Grey/Grey6 */
-
  border-radius: 100px;
 background: #E5E7EF;
 
